@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "df17f403-1cd3-495d-bb1a-5b880cc34d55",
+		"name": "memfault",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20075297"
+	},
+	"item": [
+		{
+			"name": "Get firmware events",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8880/firmware/3",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8880",
+					"path": [
+						"firmware",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload firmware event",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firmware\": \"1.0.3\",\n    \"timestamp\": \"2023-01-01T00:00:00.000000Z\",\n    \"status\": \"updated\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8880/firmware/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8880",
+					"path": [
+						"firmware",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "super_secret_key_3",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "api_key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

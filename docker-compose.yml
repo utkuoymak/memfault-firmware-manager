@@ -1,6 +1,34 @@
 version: '2'
 services:
+  db:
+    build:
+        context: ./
+        dockerfile: db.dockerfile
+    restart: always
+    environment:
+      POSTGRES_USER: firmware
+      POSTGRES_PASSWORD: firmware
+      POSTGRES_DB: firmware
+    networks:
+        - firmware-network
+    ports:
+    - "5432:5432"
+
+
   web:
-    build: .
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    networks:
+        - firmware-network
+    restart: always
+    environment:
+      DATABASE_URI: postgresql://firmware:firmware@db:5432/firmware
+    depends_on:
+      - db
     ports:
     - "8880:8880"
+
+networks:
+  firmware-network:
+    driver: bridge
